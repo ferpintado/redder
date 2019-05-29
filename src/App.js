@@ -1,9 +1,11 @@
 import React from 'react';
+import SearchBar from './components/SearchBar.js'
 import './App.scss';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container redder-main">
+      <SearchBar />
       <h2>Reddit</h2>
     </div>
   );
