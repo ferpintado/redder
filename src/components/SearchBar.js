@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from "prop-types";
+import { withRouter } from 'react-router-dom'
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -8,6 +10,10 @@ class SearchBar extends React.Component {
     };
   }
 
+  static propTypes = {
+    history: PropTypes.object.isRequired
+  };
+
   onChange(event) {
     this.setState({
       value: event.target.value.replace(/\s/g, '')
@@ -16,7 +22,7 @@ class SearchBar extends React.Component {
 
   onKeyPress(event){
     if (event.key === 'Enter' && this.state.value !== '') {
-      console.log('Fetch subreddit');
+      this.props.history.push(`/r/${this.state.value}`);
     }
   }
 
@@ -34,7 +40,7 @@ class SearchBar extends React.Component {
             <div className="input-group-prepend">
               <div className="input-group-text">r/</div>
             </div>
-            <input type="text" className="form-control" placeholder="subreddit" value={this.state.value} onChange={this.onChange.bind(this)} onKeyPress={this.onKeyPress.bind(this)}/>
+            <input type="text" className="form-control" placeholder="search subreddit" value={this.state.value} onChange={this.onChange.bind(this)} onKeyPress={this.onKeyPress.bind(this)}/>
             {this.state.value.length > 0 &&          
               <button className="btn bg-transparent" style={{marginLeft: -40, zIndex: 100}} onClick={this.clearInput.bind(this)}>
                 <i className="fa fa-times"></i>
@@ -48,4 +54,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);
