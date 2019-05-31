@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { getPosts } from '../actions/index';
+import Post from './Post';
 
 const mapStateToProps = state => {
   return {
-    isFetching: state.subreddit.isFetching
+    isFetching: state.subreddit.isFetching,
+    posts: state.subreddit.posts
   };
 }
 
@@ -30,11 +32,19 @@ const Loading = () => {
 
 class PostList extends React.Component {
 
+  renderList(){
+    return this.props.posts.map((post, index) => {
+      return <Post data={post} key={index}/>
+    });
+  }
+
   render(){
     return (
       <React.Fragment>
-        {this.props.isFetching &&
+        {this.props.isFetching ?
           <Loading/>
+        :
+          this.renderList()
         }
       </React.Fragment>
     )

@@ -1,8 +1,10 @@
-## High Level Architecture
-- Create React App 
+## Technologies used
+- create-react-app 
 - Sass 
 - Bootstrap
 - Font Awesome
+- react-redux
+- react-router
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

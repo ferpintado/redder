@@ -22,13 +22,27 @@ export function subExists(flag){
   };
 }
 
+export function loadPosts(response){
+  const { data } = response.data;
+  console.log(data);
+  return {
+    type: LOAD_POSTS,
+    payload: {
+      posts: data.children,
+      after: data.after,
+      before: data.children[0].data.name
+    }
+  };
+
+}
+
 export const getPosts = (sub, params) => async dispatch => {
   try{
-    dispatch(subExists(null));
     dispatch(isFetchingPosts(true));
     const response = await subreddit.getPosts(sub, params);
+    dispatch(loadPosts(response));
+    dispatch(subExists(true));
     dispatch(isFetchingPosts(false));
-    console.log(response);
   }catch(e){
     dispatch(subExists(false));
   }
