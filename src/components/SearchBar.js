@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom'
 
 class SearchBar extends React.Component {
@@ -10,10 +10,6 @@ class SearchBar extends React.Component {
     };
   }
 
-  static propTypes = {
-    history: PropTypes.object.isRequired
-  };
-
   onChange(event) {
     this.setState({
       value: event.target.value.replace(/\s/g, '')
@@ -23,6 +19,7 @@ class SearchBar extends React.Component {
   onKeyPress(event){
     if (event.key === 'Enter' && this.state.value !== '') {
       this.props.history.push(`/r/${this.state.value}`);
+      this.clearInput();
     }
   }
 
@@ -53,5 +50,9 @@ class SearchBar extends React.Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default withRouter(SearchBar);
