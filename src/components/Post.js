@@ -13,7 +13,7 @@ class Post extends React.Component {
   render(){
     const { data } = this.props.data;
     const hasThumbnail = this.isValidUrl(data.thumbnail);
-    const timestamp = new Date(data.created_utc).toString();
+    const timestamp = new Date(data.created_utc * 1000).toString();
     const permalink = `https://www.reddit.com${data.permalink}`
     return (
       <div className="card">
