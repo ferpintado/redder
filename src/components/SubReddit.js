@@ -37,7 +37,7 @@ class SubReddit extends React.Component {
       <React.Fragment>
         <h1>r/{subreddit}</h1>
         {!notFound ?
-          <PostList/>
+          <PostList subreddit={subreddit}/>
         :
         <p>
           404 - subreddit not found <strong>:(</strong>

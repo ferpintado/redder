@@ -18,12 +18,12 @@ class Post extends React.Component {
     return (
       <div className="card">
         <div className="row no-gutters">
-          <div className="col-md-4">
             {hasThumbnail &&
-              <img src={data.thumbnail} className="card-img" alt={data.title}/>
+              <div className="col-md-3" style={{display:"flex", alignItems: "center"}}>
+                <img src={data.thumbnail} className="card-img" alt={data.title}/>
+              </div>
             }
-           </div>
-            <div className="col-md-8">
+            <div className={hasThumbnail ? "col-md-9" : "col-md-12"}>
               <div className="card-body">
                 <h5 className="card-title"><a href={data.url} target="_blank" rel="noopener noreferrer">{data.title}</a></h5>
                 <p className="card-text"><strong>Author:</strong> {data.author}</p>

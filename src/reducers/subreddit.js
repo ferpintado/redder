@@ -11,9 +11,17 @@ const INITIAL_STATE = {
 export default function (state = INITIAL_STATE, action){
   switch(action.type){
     case LOAD_POSTS:
+      let posts = action.payload.posts;
+
+      if (action.payload.position === 'after'){
+        posts = state.posts.concat(action.payload.posts)
+      }else if(action.payload.position === 'before'){
+        posts = action.payload.posts.concat(state.posts);
+      }
+      debugger; 
       return { 
         ...state,
-        posts: action.payload.posts,
+        posts,
         after: action.payload.after,
         before: action.payload.before,
         subExists: true

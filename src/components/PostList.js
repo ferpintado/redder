@@ -6,7 +6,8 @@ import Post from './Post';
 const mapStateToProps = state => {
   return {
     isFetching: state.subreddit.isFetching,
-    posts: state.subreddit.posts
+    posts: state.subreddit.posts,
+    after: state.subreddit.after
   };
 }
 
@@ -16,7 +17,7 @@ const mapDispatchToProps = {
 
 const Loading = () => {
   return (
-    <div className="mt-5 d-flex justify-content-center">
+    <div className="mt-3 d-flex justify-content-center">
       <div className="spinner-grow text-dark" role="status">
         <span className="sr-only">Loading...</span>
       </div>
@@ -38,13 +39,21 @@ class PostList extends React.Component {
     });
   }
 
+  loadMore(){
+    this.props.getPosts(this.props.subreddit, { after: this.props.after })
+  }
+
   render(){
     return (
       <React.Fragment>
-        {this.props.isFetching ?
+        {this.renderList()}
+        {this.props.isFetching &&
           <Loading/>
-        :
-          this.renderList()
+        }
+        {this.props.after && !this.props.isFetching &&
+          <div className="d-flex justify-content-center">
+            <button type="button" className="mt-2 btn btn-outline-dark" onClick={this.loadMore.bind(this)}>Load more</button>
+          </div>
         }
       </React.Fragment>
     )
