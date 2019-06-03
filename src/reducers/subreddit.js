@@ -1,6 +1,6 @@
 import { FETCHING_POSTS, LOAD_POSTS, VALID_SUB, STORE_BEFORE_POSTS, LOAD_BEFORE_POSTS } from '../actions';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   after: null,
   before: null,
   before_posts: [],

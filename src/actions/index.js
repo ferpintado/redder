@@ -1,4 +1,4 @@
-import subreddit from '../api/subreddit.js'
+import subreddit from '../api/subreddit'
 
 export const FETCHING_POSTS = 'FETCHING_POSTS';
 export const LOAD_POSTS = 'LOAD_POSTS';
@@ -67,21 +67,6 @@ export const getBeforePosts = (sub, params) => async dispatch => {
     dispatch(subExists(false));
   }
 }
-
-// export const getBeforePosts = (sub, params) => async (dispatch, getState)=> {
-//     const response = { 
-//       data: {
-//         data: {
-//           children: getState().subreddit.posts.slice(10,20)
-//         }
-//       }
-//     }
-//     console.log(getState().subreddit.before_posts.length);
-//     // debugger;
-//     // const response = await subreddit.getPosts(sub, params);
-//     dispatch(storeBeforePosts(response));    
- 
-// }
 
 export const appendBeforePosts= () => {
   return {

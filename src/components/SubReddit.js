@@ -64,7 +64,7 @@ class SubReddit extends React.Component {
         {!notFound ?
           <PostList subreddit={subreddit}/>
         :
-        <p>
+        <p data-testid="not-found">
           404 - subreddit not found <strong>:(</strong>
         </p>
         }

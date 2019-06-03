@@ -19,7 +19,7 @@ const mapDispatchToProps = {
 
 const Loading = () => {
   return (
-    <div className="mt-3 d-flex justify-content-center">
+    <div data-testid="loading-posts" className="mt-3 d-flex justify-content-center">
       <div className="spinner-grow text-dark" role="status">
         <span className="sr-only">Loading...</span>
       </div>
@@ -36,6 +36,9 @@ const Loading = () => {
 class PostList extends React.Component {
 
   renderList(){
+    if (!this.props.isFetching && this.props.posts.length === 0){
+      return <p data-testid="no-posts">No posts</p>
+    }
     return this.props.posts.map((post, index) => {
       return <Post data={post} key={index}/>
     });
@@ -47,7 +50,6 @@ class PostList extends React.Component {
 
   appendBefore(){
     const lastScrollHeight = document.body.scrollHeight;
-    // const offset = window.pageYOffset;
     this.props.appendBeforePosts();
     setTimeout(() => {
       document.documentElement.scrollTop += document.body.scrollHeight-lastScrollHeight;
@@ -56,12 +58,10 @@ class PostList extends React.Component {
 
   render(){
     return (
-      // TODO: add no posts case
-
       <React.Fragment>
         {this.props.before_posts.length > 0 &&
         <div className="d-flex justify-content-center sticky-top mt-2 mb-2" style={{top: 10}}>
-          <button type="button" className=" btn btn-primary" onClick={this.appendBefore.bind(this)}>{this.props.before_posts.length} new posts. Click to load.</button>
+          <button data-testid="load-before" type="button" className=" btn btn-primary" onClick={this.appendBefore.bind(this)}>{this.props.before_posts.length} new posts. Click to load.</button>
         </div>
         }
         {this.renderList()}
@@ -70,7 +70,7 @@ class PostList extends React.Component {
         }
         {this.props.after && !this.props.isFetching &&
           <div className="d-flex justify-content-center">
-            <button type="button" className="mt-2 btn btn-outline-dark" onClick={this.loadMore.bind(this)}>Load more</button>
+            <button data-testid="load-more" type="button" className="mt-2 btn btn-outline-dark" onClick={this.loadMore.bind(this)}>Load more</button>
           </div>
         }
       </React.Fragment>

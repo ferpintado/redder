@@ -37,9 +37,9 @@ class SearchBar extends React.Component {
             <div className="input-group-prepend">
               <div className="input-group-text">r/</div>
             </div>
-            <input type="text" className="form-control" placeholder="search subreddit" value={this.state.value} onChange={this.onChange.bind(this)} onKeyPress={this.onKeyPress.bind(this)}/>
+            <input data-testid="search-input" type="text" className="form-control" placeholder="search subreddit" value={this.state.value} onChange={this.onChange.bind(this)} onKeyPress={this.onKeyPress.bind(this)}/>
             {this.state.value.length > 0 &&          
-              <button className="btn bg-transparent" style={{marginLeft: -40, zIndex: 100}} onClick={this.clearInput.bind(this)}>
+              <button data-testid="search-clear" className="btn bg-transparent" style={{marginLeft: -40, zIndex: 100}} onClick={this.clearInput.bind(this)}>
                 <i className="fa fa-times"></i>
               </button>
             }
