@@ -1,6 +1,6 @@
 import subredditReducer, { INITIAL_STATE } from '../../reducers/subreddit';
 import * as subActions from '../../actions/index';
-import { redditResponse as response } from '../mocks';
+import { redditResponse as response } from '../../mocks';
 
 describe('Subreddit Reducer spec', () => {
   test('INITIAL STATE', () => {
@@ -22,7 +22,7 @@ describe('Subreddit Reducer spec', () => {
       posts: response.data.data.children,
       after: 'test',
       before: 'test_post',
-      before_posts: [],
+      beforePosts: [],
       subExists: true
     }
     expect(subredditReducer(undefined, action)).toEqual(expectedState);
@@ -37,7 +37,7 @@ describe('Subreddit Reducer spec', () => {
     };
     const expectedState = { 
       ...INITIAL_STATE,
-      before_posts: response.data.data.children,
+      beforePosts: response.data.data.children,
       before: response.data.data.children[0].data.name
     }
     expect(subredditReducer(undefined, action)).toEqual(expectedState);
@@ -57,7 +57,7 @@ describe('Subreddit Reducer spec', () => {
     };
     const expectedState = { 
       ...beforeState,
-      before_posts: [],
+      beforePosts: [],
       before: "test_post",
       posts: [response.data.data.children[0]]
     }

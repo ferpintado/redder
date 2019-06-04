@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store'
 import * as subActions from '../../actions/index.js';
-import { redditResponse as response} from '../mocks';
+import { redditResponse as response} from '../../mocks';
 import { INITIAL_STATE } from '../../reducers'
 import api from '../../api/subreddit';
 import thunk from 'redux-thunk'

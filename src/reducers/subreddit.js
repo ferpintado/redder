@@ -3,7 +3,7 @@ import { FETCHING_POSTS, LOAD_POSTS, VALID_SUB, STORE_BEFORE_POSTS, LOAD_BEFORE_
 export const INITIAL_STATE = {
   after: null,
   before: null,
-  before_posts: [],
+  beforePosts: [],
   posts: [],
   subExists: null,
   isFetching: false
@@ -21,25 +21,25 @@ export default function (state = INITIAL_STATE, action){
         ...state,
         posts,
         after: action.payload.after,
-        before: state.before_posts.length === 0 && posts.length > 0 ? posts[0].data.name : state.before,
-        before_posts: action.payload.position === 'init'? [] : state.before_posts,
+        before: state.beforePosts.length === 0 && posts.length > 0 ? posts[0].data.name : state.before,
+        beforePosts: action.payload.position === 'init'? [] : state.beforePosts,
         subExists: true
       };
 
     case STORE_BEFORE_POSTS:
-      const before_posts = action.payload.posts.concat(state.before_posts);
+      const beforePosts = action.payload.posts.concat(state.beforePosts);
       return { 
         ...state,
-        before_posts,
-        before: before_posts.length > 0 ? before_posts[0].data.name : state.before
+        beforePosts,
+        before: beforePosts.length > 0 ? beforePosts[0].data.name : state.before
       };
 
     case LOAD_BEFORE_POSTS:
-      const new_posts = state.before_posts.concat(state.posts);
+      const new_posts = state.beforePosts.concat(state.posts);
       return {
         ...state,
         posts: new_posts,
-        before_posts: [],
+        beforePosts: [],
       }
 
     case FETCHING_POSTS:

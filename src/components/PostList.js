@@ -8,7 +8,7 @@ const mapStateToProps = state => {
     isFetching: state.subreddit.isFetching,
     posts: state.subreddit.posts,
     after: state.subreddit.after,
-    before_posts: state.subreddit.before_posts
+    beforePosts: state.subreddit.beforePosts
   };
 }
 
@@ -59,9 +59,9 @@ class PostList extends React.Component {
   render(){
     return (
       <React.Fragment>
-        {this.props.before_posts.length > 0 &&
+        {this.props.beforePosts.length > 0 &&
         <div className="d-flex justify-content-center sticky-top mt-2 mb-2" style={{top: 10}}>
-          <button data-testid="load-before" type="button" className=" btn btn-primary" onClick={this.appendBefore.bind(this)}>{this.props.before_posts.length} new posts. Click to load.</button>
+          <button data-testid="load-before" type="button" className=" btn btn-primary" onClick={this.appendBefore.bind(this)}>{this.props.beforePosts.length} new posts. Click to load.</button>
         </div>
         }
         {this.renderList()}

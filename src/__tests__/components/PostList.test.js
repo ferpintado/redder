@@ -92,7 +92,7 @@ describe('<PostList /> spec', () => {
     const { getByTestId, container } = renderComponent(<PostList/> ,
       { 
         posts: createPosts(5),
-        before_posts: createPosts(5),
+        beforePosts: createPosts(5),
       }
     );
     const loadBefore = getByTestId('load-before');

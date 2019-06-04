@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import Post from '../../components/Post'
-import { postMock } from '../mocks'
+import { postMock } from '../../mocks'
 
 describe('<Post /> spec', () => {
   test('it should render', () => {
