@@ -5,9 +5,9 @@ import thunk from 'redux-thunk';
 import {Provider} from 'react-redux'
 import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
-import rootReducer from '../reducers'
-import { INITIAL_STATE } from '../reducers/subreddit';
-import PostList from './PostList';
+import rootReducer from '../../reducers'
+import { INITIAL_STATE } from '../../reducers/subreddit';
+import PostList from '../../components/PostList';
 
 const SUBREDDIT = 'vancouver';
 

@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import {withRouter} from 'react-router'
 import {createMemoryHistory} from 'history'
 import {Router} from 'react-router-dom'
-import SearchBar from './SearchBar'
+import SearchBar from '../../components/SearchBar'
 
 const LocationDisplay = withRouter(({location}) => (
   <div data-testid="location-display">{location.pathname}</div>

@@ -37,7 +37,7 @@ export function loadPosts(response, params){
   };
 }
 
-export function storeBeforePosts(response, params){
+export function storeBeforePosts(response){
   const { data } = response.data;
   return {
     type: STORE_BEFORE_POSTS,

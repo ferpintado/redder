@@ -5,14 +5,11 @@ import thunk from 'redux-thunk';
 import {Provider} from 'react-redux'
 import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
-import rootReducer from '../reducers'
-import { INITIAL_STATE } from '../reducers/subreddit';
-import SubReddit from './SubReddit';
-import api from '../api/subreddit';
+import rootReducer from '../../reducers'
+import SubReddit from '../../components/SubReddit';
+import api from '../../api/subreddit';
 
-
-
-jest.mock('../api/subreddit', () => {
+jest.mock('../../api/subreddit', () => {
   return {
     getPosts: jest.fn((subreddit, params) =>
       Promise.resolve({
@@ -47,7 +44,6 @@ const store = createStore(
 
 function renderComponent(
   ui,
-  currentState = {},
   {route = `/r/${SUBREDDIT_URL}`, history = createMemoryHistory({initialEntries: [route]})} = {}
 ) {
 

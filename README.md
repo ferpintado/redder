@@ -5,6 +5,8 @@
 - Font Awesome
 - react-redux
 - react-router
+- react-test-library
+- jest
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
